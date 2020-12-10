@@ -6,23 +6,23 @@ Compilation:  PASSED (0 errors, 2 warnings)
 API:          PASSED
 
 SpotBugs:     PASSED
-PMD:          FAILED (2 warnings)
-Checkstyle:   FAILED (0 errors, 1 warning)
+PMD:          PASSED
+Checkstyle:   PASSED
 
 Correctness:  49/49 tests passed
-Memory:       121/123 tests passed
+Memory:       123/123 tests passed
 Timing:       193/193 tests passed
 
-Aggregate score: 99.84%
+Aggregate score: 100.00%
 [Compilation: 5%, API: 5%, SpotBugs: 0%, PMD: 0%, Checkstyle: 0%, Correctness: 60%, Memory: 10%, Timing: 20%]
 
 ASSESSMENT DETAILS
 
 The following files were submitted:
 ----------------------------------
-3.2K Dec 10 10:13 Deque.java
- 423 Dec 10 10:13 Permutation.java
-3.0K Dec 10 10:13 RandomizedQueue.java
+3.2K Dec 10 13:15 Deque.java
+ 423 Dec 10 13:15 Permutation.java
+3.0K Dec 10 13:15 RandomizedQueue.java
 
 
 ********************************************************************************
@@ -35,14 +35,14 @@ The following files were submitted:
 
 % javac RandomizedQueue.java
 *-----------------------------------------------------------
-RandomizedQueue.java:14: warning: [unchecked] unchecked cast
+RandomizedQueue.java:13: warning: [unchecked] unchecked cast
         data = (Item[]) new Object[1];
                         ^
   required: Item[]
   found:    Object[]
   where Item is a type-variable:
     Item extends Object declared in class RandomizedQueue
-RandomizedQueue.java:26: warning: [unchecked] unchecked cast
+RandomizedQueue.java:25: warning: [unchecked] unchecked cast
         Item[] copy = (Item[]) new Object[capacity];
                                ^
   required: Item[]
@@ -83,9 +83,6 @@ Permutation:
 
 % pmd .
 *-----------------------------------------------------------
-RandomizedQueue.java:72: The private instance (or static) variable 'current' can be made 'final'; it is initialized only in the declaration or constructor. [ImmutableField]
-RandomizedQueue.java:73: The private instance (or static) variable 'rq' can be made 'final'; it is initialized only in the declaration or constructor. [ImmutableField]
-PMD ends with 2 warnings.
 
 
 ================================================================
@@ -99,8 +96,6 @@ PMD ends with 2 warnings.
 
 % custom checkstyle checks for RandomizedQueue.java
 *-----------------------------------------------------------
-[WARN] RandomizedQueue.java:94:23: Creating a new 'RandomizedQueue' for the iterator might be a performance bug (because 'next()' must take constant time in the worst case. [Performance]
-Checkstyle ends with 0 errors and 1 warning.
 
 % custom checkstyle checks for Permutation.java
 *-----------------------------------------------------------
@@ -425,37 +420,37 @@ Running 9 total tests.
 
 Test 1a: check formatting for sample inputs from assignment specification
   % java Permutation 3 < distinct.txt
-  I
   B
-  E
+  A
+  I
 
   % java Permutation 3 < distinct.txt
-  D
+  E
   B
-  G
+  I
 
   % java Permutation 8 < duplicates.txt
+  BB
+  BB
+  BB
+  CC
   AA
   BB
-  BB
-  BB
-  BB
-  BB
   CC
-  CC
+  BB
 
 ==> passed
 
 Test 1b: check formatting for other inputs
   % java Permutation 8 < mediumTale.txt
+  of
+  of
+  the
+  foolishness
+  of
   times
   it
-  was
   the
-  best
-  was
-  times
-  of
 
   % java Permutation 0 < distinct.txt
   [no output]
@@ -564,13 +559,13 @@ Test 4: Time main() with k = 5, for inputs containing n random strings
 => passed        1000     0.00
 => passed        2000     0.00
 => passed        4000     0.00
-=> passed        8000     0.01
+=> passed        8000     0.00
 => passed       16000     0.01
 => passed       32000     0.01
-=> passed       64000     0.03
-=> passed      128000     0.05
-=> passed      256000     0.08
-=> passed      512000     0.34
+=> passed       64000     0.02
+=> passed      128000     0.04
+=> passed      256000     0.09
+=> passed      512000     0.17
 ==> 10/10 tests passed
 
 
@@ -583,11 +578,11 @@ Test 5: Time main() with k = 1000, for inputs containing n random strings
 => passed        4000     0.00
 => passed        8000     0.00
 => passed       16000     0.01
-=> passed       32000     0.02
-=> passed       64000     0.03
+=> passed       32000     0.01
+=> passed       64000     0.02
 => passed      128000     0.04
-=> passed      256000     0.08
-=> passed      512000     0.17
+=> passed      256000     0.14
+=> passed      512000     0.21
 ==> 10/10 tests passed
 
 
@@ -908,18 +903,18 @@ Test 6a-6i: Total memory usage of iterator after inserting n items.
 
                  n        bytes
 ----------------------------------------------------------
-=> FAILED       32          352   (1.1x)
-=> passed       64          608         
-=> passed      128         1120         
-=> passed      256         2144         
-=> passed      512         4192         
-=> passed     1024         8288         
-=> passed     2048        16480         
-=> passed     4096        32864         
-=> passed     8192        65632         
-==> 8/9 tests passed
+=> passed       32          192         
+=> passed       64          320         
+=> passed      128          576         
+=> passed      256         1088         
+=> passed      512         2112         
+=> passed     1024         4160         
+=> passed     2048         8256         
+=> passed     4096        16448         
+=> passed     8192        32832         
+==> 9/9 tests passed
 
-Memory: 8.00 n + 96.00   (R^2 = 1.000)
+Memory: 4.00 n + 64.00   (R^2 = 1.000)
 
 
 Test 7a: Insert 100 strings; delete them one at a time, checking
@@ -940,20 +935,8 @@ Test 8: Insert T items into queue; then iterate over queue and check
         per iterator operation.
   * T = 64
   * T = 128
-    - failed on trial 96 of 128
-    - when the randomized queue contains 128 objects,
-    - with 33 objects remaining to be iterated over;
-    - the call to next() caused a change in memory of -512 bytes
-    - any change of more than 480 bytes fails the test
-
   * T = 256
-    - failed on trial 192 of 256
-    - when the randomized queue contains 256 objects,
-    - with 65 objects remaining to be iterated over;
-    - the call to next() caused a change in memory of -1024 bytes
-    - any change of more than 480 bytes fails the test
-
-==> FAILED
+==> passed
 
 Test 9: Total memory usage after inserting n items, seeking to identify
         values of n where memory usage is minimized as a function of n.
@@ -997,7 +980,7 @@ Max observed memory for RandomizedQueue: 32.00 n + 24.00   (R^2 = 1.000)
 
 Running 73 total tests.
 
-Total: 71/73 tests passed!
+Total: 73/73 tests passed!
 
 
 ================================================================
@@ -1042,7 +1025,7 @@ Test 2a-2k: make n calls to addLast() followed by n calls to removeLast()
 => passed      128000     0.00
 => passed      256000     0.00
 => passed      512000     0.01
-=> passed     1024000     0.03
+=> passed     1024000     0.04
 ==> 11/11 tests passed
 
 
@@ -1058,7 +1041,7 @@ Test 3a-3k: make n calls to addFirst() followed by n calls to removeLast()
 => passed       65536     0.00
 => passed      128000     0.00
 => passed      256000     0.01
-=> passed      512000     0.07
+=> passed      512000     0.01
 => passed     1024000     0.02
 ==> 11/11 tests passed
 
@@ -1073,10 +1056,10 @@ Test 4a-4k: make n calls to addLast() followed by n calls to removeFirst()
 => passed       16384     0.00
 => passed       32768     0.00
 => passed       65536     0.00
-=> passed      128000     0.00
-=> passed      256000     0.00
-=> passed      512000     0.01
-=> passed     1024000     0.03
+=> passed      128000     0.01
+=> passed      256000     0.01
+=> passed      512000     0.02
+=> passed     1024000     0.01
 ==> 11/11 tests passed
 
 
@@ -1095,8 +1078,8 @@ Test 5a-5g: make n random calls to addFirst(), removeFirst(), isEmpty(), and siz
 => passed      128000     0.01
 => passed      256000     0.01
 => passed      512000     0.02
-=> passed     1024000     0.03
-=> passed     2048000     0.06
+=> passed     1024000     0.05
+=> passed     2048000     0.09
 ==> 12/12 tests passed
 
 
@@ -1112,11 +1095,11 @@ Test 6a-6g: make n random calls to addLast(), removeLast(), isEmpty(), and size(
 => passed       16384     0.00
 => passed       32768     0.00
 => passed       65536     0.00
-=> passed      128000     0.01
+=> passed      128000     0.10
 => passed      256000     0.01
 => passed      512000     0.02
-=> passed     1024000     0.03
-=> passed     2048000     0.08
+=> passed     1024000     0.04
+=> passed     2048000     0.16
 ==> 12/12 tests passed
 
 
@@ -1132,11 +1115,11 @@ Test 7a-7g: make n random calls to addFirst(), addLast(), removeFirst(), removeL
 => passed       16384     0.00
 => passed       32768     0.00
 => passed       65536     0.00
-=> passed      128000     0.01
+=> passed      128000     0.00
 => passed      256000     0.01
 => passed      512000     0.02
 => passed     1024000     0.04
-=> passed     2048000     0.08
+=> passed     2048000     0.07
 ==> 12/12 tests passed
 
 
@@ -1152,11 +1135,11 @@ Test 8a-8g: make n calls to addFirst(); iterate over the n items by calling
 => passed       16384     0.00
 => passed       32768     0.00
 => passed       65536     0.00
-=> passed      128000     0.01
+=> passed      128000     0.00
 => passed      256000     0.01
 => passed      512000     0.01
 => passed     1024000     0.02
-=> passed     2048000     0.04
+=> passed     2048000     0.03
 ==> 12/12 tests passed
 
 
@@ -1173,9 +1156,9 @@ Test 9a-9k: make n calls to addFirst()/addLast(); interleave n calls each to
 => passed       32769     0.00
 => passed       65537     0.01
 => passed      128001     0.01
-=> passed      256001     0.03
-=> passed      512001     0.05
-=> passed     1024001     0.08
+=> passed      256001     0.02
+=> passed      512001     0.03
+=> passed     1024001     0.10
 ==> 11/11 tests passed
 
 Total: 103/103 tests passed!
@@ -1221,8 +1204,8 @@ Test 4a-k: make n calls to enqueue() followed by n calls to dequeue()
 => passed       16384     0.00
 => passed       32768     0.00
 => passed       65536     0.00
-=> passed      128000     0.02
-=> passed      256000     0.01
+=> passed      128000     0.01
+=> passed      256000     0.02
 => passed      512000     0.03
 => passed     1024000     0.06
 ==> 11/11 tests passed
@@ -1260,11 +1243,11 @@ Test 6a-k: make n calls to enqueue() followed by n random calls to
 => passed        8192     0.00
 => passed       16384     0.00
 => passed       32768     0.00
-=> passed       65536     0.01
+=> passed       65536     0.00
 => passed      128000     0.01
 => passed      256000     0.02
 => passed      512000     0.05
-=> passed     1024000     0.10
+=> passed     1024000     0.09
 ==> 11/11 tests passed
 
 
@@ -1283,7 +1266,7 @@ Test 7a-k: make n calls to enqueue() followed by n random calls to
 => passed       65536     0.00
 => passed      128000     0.01
 => passed      256000     0.02
-=> passed      512000     0.05
+=> passed      512000     0.06
 => passed     1024000     0.13
 ==> 11/11 tests passed
 
@@ -1299,11 +1282,11 @@ Test 8a-k: make n calls to enqueue() followed by n calls each to
 => passed        8192     0.00
 => passed       16384     0.00
 => passed       32768     0.00
-=> passed       65536     0.01
+=> passed       65536     0.00
 => passed      128000     0.01
 => passed      256000     0.02
-=> passed      512000     0.04
-=> passed     1024000     0.08
+=> passed      512000     0.03
+=> passed     1024000     0.15
 ==> 11/11 tests passed
 
 
@@ -1320,8 +1303,8 @@ Test 9a-i: make 100 calls to enqueue; 99 calls to dequeue;
 => passed       16384     0.00
 => passed       32768     0.01
 => passed       65536     0.02
-=> passed      128000     0.03
-=> passed      256000     0.06
+=> passed      128000     0.02
+=> passed      256000     0.05
 ==> 9/9 tests passed
 
 

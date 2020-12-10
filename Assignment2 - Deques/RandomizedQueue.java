@@ -1,7 +1,6 @@
 import edu.princeton.cs.algs4.StdOut;
 import edu.princeton.cs.algs4.StdRandom;
 
-import java.util.Arrays;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
@@ -69,18 +68,20 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
     }
 
     private class RandomizedQueueIterator implements Iterator<Item> {
+        private final int[] randomIndexes;
         private int current;
-        private RandomizedQueue<Item> rq;
 
         public RandomizedQueueIterator() {
             current = 0;
-            rq = new RandomizedQueue<Item>();
-            rq.data = Arrays.copyOf(data, size);
-            rq.size = size;
+            randomIndexes = new int[size];
+            for (int i = 0; i < size; i++)
+                randomIndexes[i] = i;
+
+            StdRandom.shuffle(randomIndexes);
         }
 
         public boolean hasNext() {
-            return current < rq.size;
+            return current < size;
         }
 
         public void remove() {
@@ -91,7 +92,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
             if (!hasNext())
                 throw new NoSuchElementException();
 
-            return rq.dequeue();
+            return data[randomIndexes[current++]];
         }
     }
 
