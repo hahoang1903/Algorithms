@@ -9,23 +9,23 @@ ASSESSMENT SUMMARY
 Compilation:  PASSED
 API:          PASSED
 
-Spotbugs:     PASSED
+SpotBugs:     PASSED
 PMD:          PASSED
-Checkstyle:   FAILED (0 errors, 4 warnings)
+Checkstyle:   PASSED
 
-Correctness:  33/38 tests passed
+Correctness:  38/38 tests passed
 Memory:       8/8 tests passed
-Timing:       19/20 tests passed
+Timing:       20/20 tests passed
 
-Aggregate score: 91.11%
-[Compilation: 5%, API: 5%, Spotbugs: 0%, PMD: 0%, Checkstyle: 0%, Correctness: 60%, Memory: 10%, Timing: 20%]
+Aggregate score: 100.00%
+[Compilation: 5%, API: 5%, SpotBugs: 0%, PMD: 0%, Checkstyle: 0%, Correctness: 60%, Memory: 10%, Timing: 20%]
 
 ASSESSMENT DETAILS
 
 The following files were submitted:
 ----------------------------------
-2.3K Sep  3 14:19 Percolation.java
-1.8K Sep  3 14:19 PercolationStats.java
+3.1K Dec 10 09:11 Percolation.java
+1.8K Dec 10 09:11 PercolationStats.java
 
 
 ********************************************************************************
@@ -73,17 +73,9 @@ PercolationStats:
 
 % checkstyle *.java
 *-----------------------------------------------------------
-[WARN] PercolationStats.java:7:5: Declare static variables before instance variables, constructors, and methods. [DeclarationOrder]
-[WARN] PercolationStats.java:7:33: The constant 'confidence_95' must be ALL_UPPERCASE, with words separated by underscores. [ConstantName]
-[WARN] PercolationStats.java:21:45: Typecast is not followed by whitespace. [WhitespaceAfter]
-Checkstyle ends with 0 errors and 3 warnings.
 
 % custom checkstyle checks for Percolation.java
 *-----------------------------------------------------------
-[INFO] Percolation.java:63: Using a loop in this method might be a performance bug. [Performance]
-[INFO] Percolation.java:64: Using a loop in this method might be a performance bug. [Performance]
-[WARN] Percolation.java:1: We recommend defining at least one private helper method, e.g., to validate the row and column indices or to map from 2D to 1D indices. [Design]
-Checkstyle ends with 0 errors and 1 warning.
 
 % custom checkstyle checks for PercolationStats.java
 *-----------------------------------------------------------
@@ -134,18 +126,10 @@ Test 2: open random sites until the system percolates
 
 Test 3: open predetermined sites for n = 1 and n = 2 (corner case test)
   * filename = input1.txt
-    - percolates() returns wrong value after 0 sites opened
-    - student   percolates() = true
-    - reference percolates() = false
-
   * filename = input1-no.txt
-    - percolates() returns wrong value after 0 sites opened
-    - student   percolates() = true
-    - reference percolates() = false
-
   * filename = input2.txt
   * filename = input2-no.txt
-==> FAILED
+==> passed
 
 Test 4: check predetermined sites with long percolating path
   * filename = snake13.txt
@@ -266,151 +250,43 @@ Test 17: substitute WeightedQuickUnionUF data type that sets root nondeterminist
 
 Test 18: check for backwash with predetermined sites
   * filename = input20.txt
-    - isFull() returns wrong value after 231 sites opened
-    - student   isFull(18, 1) = true
-    - reference isFull(18, 1) = false
-
   * filename = input10.txt
-    - isFull() returns wrong value after 56 sites opened
-    - student   isFull(9, 1) = true
-    - reference isFull(9, 1) = false
-
   * filename = input50.txt
-    - isFull() returns wrong value after 1412 sites opened
-    - student   isFull(22, 28) = true
-    - reference isFull(22, 28) = false
-
   * filename = jerry47.txt
-    - isFull() returns wrong value after 1076 sites opened
-    - student   isFull(11, 47) = true
-    - reference isFull(11, 47) = false
-
   * filename = sedgewick60.txt
-    - isFull() returns wrong value after 1577 sites opened
-    - student   isFull(21, 59) = true
-    - reference isFull(21, 59) = false
-
   * filename = wayne98.txt
-    - isFull() returns wrong value after 3851 sites opened
-    - student   isFull(69, 9) = true
-    - reference isFull(69, 9) = false
-
-==> FAILED
+==> passed
 
 Test 19: check for backwash with predetermined sites that have
          multiple percolating paths
   * filename = input3.txt
-    - isFull() returns wrong value after 4 sites opened
-    - student   isFull(3, 1) = true
-    - reference isFull(3, 1) = false
-
   * filename = input4.txt
-    - isFull() returns wrong value after 7 sites opened
-    - student   isFull(4, 4) = true
-    - reference isFull(4, 4) = false
-
   * filename = input7.txt
-    - isFull() returns wrong value after 12 sites opened
-    - student   isFull(6, 1) = true
-    - reference isFull(6, 1) = false
-
-==> FAILED
+==> passed
 
 Test 20: call all methods in random order until all sites are open
          (these inputs are prone to backwash)
   * n = 3
-    - isFull() returns wrong value after 6 sites opened
-    - student   isFull(3, 3) = true
-    - reference isFull(3, 3) = false
-
-    - failed on trial 2 of 40
-
   * n = 5
-    - isFull() returns wrong value after 19 sites opened
-    - student   isFull(2, 5) = true
-    - reference isFull(2, 5) = false
-
-    - failed on trial 4 of 20
-
   * n = 7
-    - isFull() returns wrong value after 24 sites opened
-    - student   isFull(5, 6) = true
-    - reference isFull(5, 6) = false
-
-    - failed on trial 1 of 10
-
   * n = 10
-    - isFull() returns wrong value after 60 sites opened
-    - student   isFull(8, 9) = true
-    - reference isFull(8, 9) = false
-
-    - failed on trial 1 of 5
-
   * n = 20
-    - isFull() returns wrong value after 240 sites opened
-    - student   isFull(8, 17) = true
-    - reference isFull(8, 17) = false
-
-    - failed on trial 1 of 2
-
   * n = 50
-    - isFull() returns wrong value after 1416 sites opened
-    - student   isFull(42, 41) = true
-    - reference isFull(42, 41) = false
-
-    - failed on trial 1 of 1
-
-==> FAILED
+==> passed
 
 Test 21: substitute WeightedQuickUnionUF data type that sets root nondeterministically;
          call all methods in random order until all sites are open
          (these inputs are prone to backwash)
   * n = 3
-    - isFull() returns wrong value after 7 sites opened
-    - student   isFull(3, 1) = true
-    - reference isFull(3, 1) = false
-
-    - failed on trial 9 of 40
-
   * n = 5
-    - isFull() returns wrong value after 19 sites opened
-    - student   isFull(4, 5) = true
-    - reference isFull(4, 5) = false
-
-    - failed on trial 4 of 20
-
   * n = 7
-    - isFull() returns wrong value after 22 sites opened
-    - student   isFull(7, 5) = true
-    - reference isFull(7, 5) = false
-
-    - failed on trial 2 of 10
-
   * n = 10
-    - isFull() returns wrong value after 59 sites opened
-    - student   isFull(7, 8) = true
-    - reference isFull(7, 8) = false
-
-    - failed on trial 1 of 5
-
   * n = 20
-    - isFull() returns wrong value after 231 sites opened
-    - student   isFull(12, 11) = true
-    - reference isFull(12, 11) = false
-
-    - failed on trial 1 of 2
-
   * n = 50
-    - isFull() returns wrong value after 1613 sites opened
-    - student   isFull(38, 22) = true
-    - reference isFull(38, 22) = false
-
-    - failed on trial 1 of 1
-
-==> FAILED
+==> passed
 
 
-Total: 16/21 tests passed!
+Total: 21/21 tests passed!
 
 
 ================================================================
@@ -424,14 +300,14 @@ Running 17 total tests.
 
 Test 1: check formatting of output of main()
   % java-algs4 PercolationStats 20 10
-  mean					= 0.5842499999999999
-  stddev					= 0.055025877750584075
-  95% confidence interval = [0.5501446076274016, 0.6183553923725983]
+  mean					= 0.6097500000000001
+  stddev					= 0.06809358347973113
+  95% confidence interval = [0.5675451597036023, 0.6519548402963979]
 
   % java-algs4 PercolationStats 200 100
-  mean					= 0.5915435
-  stddev					= 0.009454608210504622
-  95% confidence interval = [0.5896903967907411, 0.5933966032092589]
+  mean					= 0.5929462499999998
+  stddev					= 0.009989048532940177
+  95% confidence interval = [0.5909883964875435, 0.594904103512456]
 
 ==> passed
 
@@ -630,12 +506,11 @@ Test 4: Call PercolationStats constructor and instance methods with trials = 3
 
          n  seconds log ratio
      ------------------------
-       512     0.13       2.8
-       724     0.32       2.6
-      1024     0.70       2.3
-      1448     1.53       2.3
-      2048     3.20       2.1
-      2896     6.76       2.2
+       724     0.15       2.5
+      1024     0.37       2.5
+      1448     1.02       3.0
+      2048     2.73       2.8
+      2896     6.61       2.6
 ==> passed
 
 
@@ -658,18 +533,18 @@ Test 1a-1d: check that total memory <= 17 n^2 + 128 n + 1024 bytes
 
                  n        bytes
 --------------------------------------------
-=> passed       64        39704         
-=> passed      256       600536         
-=> passed      512      2380504         
-=> passed     1024      9479384         
+=> passed       64        72600         
+=> passed      256      1124952         
+=> passed      512      4477784         
+=> passed     1024     17868120         
 ==> 4/4 tests passed
 
 
-Estimated student memory = 9.00 n^2 + 41.00 n + 216.00   (R^2 = 1.000)
+Estimated student memory = 17.00 n^2 + 41.00 n + 344.00   (R^2 = 1.000)
 
 
 Test 2 (bonus): check that total memory <= 11 n^2 + 128 n + 1024 bytes
-   -  bonus available only if solution passes backwash correctness test
+   -  failed memory test for n = 64
 ==> FAILED
 
 
@@ -695,13 +570,13 @@ Test 1a-1e: Creates an n-by-n percolation system; open sites at random until
                                        2 * connected()
                  n       union()              + find()        constructor
 -----------------------------------------------------------------------------------
-=> passed       16          191                   298                   1         
-=> passed       32          578                  1042                   1         
-=> passed       64         3093                  4984                   1         
-=> passed      128        11433                 19182                   1         
-=> passed      256        45859                 77156                   1         
-=> passed      512       188982                314480                   1         
-=> passed     1024       735568               1241062                   1         
+=> passed       16          512                   356                   2         
+=> passed       32         1356                  1152                   2         
+=> passed       64         6106                  4982                   2         
+=> passed      128        22088                 18974                   2         
+=> passed      256        91346                 77260                   2         
+=> passed      512       372120                312070                   2         
+=> passed     1024      1489588               1249278                   2         
 ==> 7/7 tests passed
 
 
@@ -719,13 +594,13 @@ Tests 2a-2f: Check whether the number of calls to union(), connected(), and find
 
                  n     per open()      per isOpen()    per isFull()    per percolates() 
 ---------------------------------------------------------------------------------------------
-=> passed       16        4               0               2               2         
-=> passed       32        4               0               2               2         
-=> passed       64        4               0               2               2         
-=> passed      128        4               0               2               2         
-=> passed      256        4               0               2               2         
-=> passed      512        4               0               2               2         
-=> passed     1024        4               0               2               2         
+=> passed       16        8               0               2               2         
+=> passed       32        8               0               2               2         
+=> passed       64        8               0               2               2         
+=> passed      128        8               0               2               2         
+=> passed      256        8               0               2               2         
+=> passed      512        8               0               2               2         
+=> passed     1024        8               0               2               2         
 ==> 7/7 tests passed
 
 
@@ -742,11 +617,11 @@ Test 3: Create an n-by-n percolation system; interleave calls to percolates()
                         log   union-find     log
          n  seconds   ratio   operations   ratio
      -------------------------------------------
-      1024     0.17     2.5      2714264     2.0
-      1448     0.44     2.8      5423338     2.0
-      2048     0.92     2.1     10858374     2.0
-      2896     1.92     2.1     21720002     2.0
-      4096     4.09     2.2     43521082     2.0
+      1024     0.17     2.7      4115488     2.0
+      1448     0.44     2.8      8407454     2.1
+      2048     1.04     2.5     16803300     2.0
+      2896     2.54     2.6     33663168     2.0
+      4096     5.30     2.1     67222592     2.0
 ==> passed
 
 
@@ -759,16 +634,15 @@ Test 4: Create an n-by-n percolation system; interleave calls to open(),
                         log   union-find     log
          n  seconds   ratio   operations   ratio
      -------------------------------------------
-       181     0.39     4.0        86928     2.1
-       256     1.57     4.0       178488     2.1
-       362     6.09     3.9       335232     1.8
-       512    25.36     4.1       678706     2.0
-     [ exceeded the time limit of 10.0 seconds ]
+      1024     0.13     2.2      4205172     2.0
+      1448     0.37     3.0      8331912     2.0
+      2048     0.92     2.6     16900778     2.0
+      2896     2.43     2.8     33490748     2.0
+      4096     5.08     2.1     67331196     2.0
+==> passed
 
-==> FAILED
 
-
-Total: 15/16 tests passed!
+Total: 16/16 tests passed!
 
 
 ================================================================
