@@ -9,20 +9,20 @@ SpotBugs:     PASSED
 PMD:          PASSED
 Checkstyle:   PASSED
 
-Correctness:  35/36 tests passed
+Correctness:  36/36 tests passed
 Memory:       4/4 tests passed
-Timing:       20/27 tests passed
+Timing:       27/27 tests passed
 
-Aggregate score: 93.15%
+Aggregate score: 100.00%
 [Compilation: 5%, API: 5%, SpotBugs: 0%, PMD: 0%, Checkstyle: 0%, Correctness: 60%, Memory: 10%, Timing: 20%]
 
 ASSESSMENT DETAILS
 
 The following files were submitted:
 ----------------------------------
- 732 Dec  8 13:58 Outcast.java
-4.2K Dec  8 13:58 SAP.java
-3.2K Dec  8 13:58 WordNet.java
+ 732 Dec 10 17:54 Outcast.java
+4.2K Dec 10 17:54 SAP.java
+3.1K Dec 10 17:54 WordNet.java
 
 
 ********************************************************************************
@@ -209,14 +209,7 @@ Test 16: check length() and ancestor() with iterable arguments
   * 100 random subsets of 2 and 2 vertices in digraph-wordnet.txt
   * 100 random subsets of 3 and 11 vertices in digraph-wordnet.txt
   * 100 random subsets of 11 and 3 vertices in digraph-wordnet.txt
-
-    
-        ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-        OperationCountLimitExceededException
-        Number of primitive operations in Digraph exceeds limit: 1000000000
-        ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-
-==> FAILED
+==> passed
 
 Test 17: check length() and ancestor() with zero-length iterable arguments
   * 100 random subsets of 0 and 5 vertices in digraph-wordnet.txt
@@ -232,15 +225,15 @@ Test 18: check length() and ancestor() with invalid arguments
 ==> passed
 
 Test 19: check iterable versions of length() and ancestor() with invalid arguments
-  * G = digraph1.txt, v = { 1, 4, 5, 7 }, w = null
-  * G = digraph1.txt, v = null, w = { 0, 3, 6, 8, 9, 10, 12 }
+  * G = digraph1.txt, v = { 0, 7, 9, 12 }, w = null
+  * G = digraph1.txt, v = null, w = { 1, 2, 4, 5, 10 }
   * G = digraph1.txt, v = null, w = null
-  * G = digraph1.txt, v = { 1, 4, -1, 5, 7 }, w = { 0, 3, 6, 8, 9, 10, 12 }
-  * G = digraph1.txt, v = { 1, 4, 5, 7 }, w = { 0, 3, 6, 8, 9, 10, -1, 12 }
-  * G = digraph1.txt, v = { 1, 4, 13, 5, 7 }, w = { 0, 3, 6, 8, 9, 10, 12 }
-  * G = digraph1.txt, v = { 1, 4, 5, 7 }, w = { 0, 13, 3, 6, 8, 9, 10, 12 }
-  * G = digraph1.txt, v = { 1, 4, 5, null, 7 }, w = { 0, 3, 6, 8, 9, 10, 12 }
-  * G = digraph1.txt, v = { 1, 4, 5, 7 }, w = { 0, 3, null, 6, 8, 9, 10, 12 }
+  * G = digraph1.txt, v = { 0, 7, 9, 12, -1 }, w = { 1, 2, 4, 5, 10 }
+  * G = digraph1.txt, v = { 0, 7, 9, 12 }, w = { 1, 2, -1, 4, 5, 10 }
+  * G = digraph1.txt, v = { 13, 0, 7, 9, 12 }, w = { 1, 2, 4, 5, 10 }
+  * G = digraph1.txt, v = { 0, 7, 9, 12 }, w = { 1, 2, 4, 5, 13, 10 }
+  * G = digraph1.txt, v = { 0, null, 7, 9, 12 }, w = { 1, 2, 4, 5, 10 }
+  * G = digraph1.txt, v = { 0, 7, 9, 12 }, w = { 1, 2, 4, null, 5, 10 }
 ==> passed
 
 Test 20: random calls to both version of length() and ancestor(),
@@ -252,7 +245,7 @@ Test 20: random calls to both version of length() and ancestor(),
 ==> passed
 
 
-Total: 19/20 tests passed!
+Total: 20/20 tests passed!
 
 
 ================================================================
@@ -429,9 +422,9 @@ Running 1 total tests.
 digraph G             = digraph-wordnet.txt
 vertices in G         = 82192
 edges    in G         = 84505
-student     memory    = 9005536 bytes
+student     memory    = 8347936 bytes
 reference   memory    = 10320680 bytes
-ratio                 = 0.87
+ratio                 = 0.81
 maximum allowed ratio = 2.50
 
 Total: 1/1 tests passed!
@@ -449,7 +442,7 @@ Test 1a: check memory of WordNet object
   * synsets = synsets1000-subgraph.txt; hypernyms = hypernyms1000-subgraph.txt
     - number of vertices in digraph = 1000
     - number of edges    in digraph = 1008
-    - student   memory              = 814864 bytes
+    - student   memory              = 806832 bytes
     - reference memory              = 1441648 bytes
     - student / reference ratio     = 0.6
     - maximum allowed rato          = 2.0
@@ -460,8 +453,8 @@ Test 1b: check memory of WordNet object
   * synsets = synsets5000-subgraph.txt; hypernyms = hypernyms5000-subgraph.txt
     - number of vertices in digraph = 5000
     - number of edges    in digraph = 5059
-    - student   memory              = 4033864 bytes
-    - reference memory              = 7042552 bytes
+    - student   memory              = 3993240 bytes
+    - reference memory              = 7042792 bytes
     - student / reference ratio     = 0.6
     - maximum allowed rato          = 2.0
 
@@ -471,8 +464,8 @@ Test 1c: check memory of WordNet object
   * synsets = synsets10000-subgraph.txt; hypernyms = hypernyms10000-subgraph.txt
     - number of vertices in digraph = 10000
     - number of edges    in digraph = 10087
-    - student   memory              = 9611480 bytes
-    - reference memory              = 16173336 bytes
+    - student   memory              = 9529432 bytes
+    - reference memory              = 16173536 bytes
     - student / reference ratio     = 0.6
     - maximum allowed rato          = 2.0
 
@@ -501,9 +494,9 @@ Test 1: time SAP constructor
 
 Test 2a-c: time length() and ancestor() with random pairs of vertices
   *  digraph-wordnet.txt
-     -  reference solution calls per second: 1037085.00
-     -  student   solution calls per second:    1536.00
-     -  reference / student ratio:               675.19
+     -  reference solution calls per second: 1053581.00
+     -  student   solution calls per second:    1186.00
+     -  reference / student ratio:               888.35
 
 => passed      student <= 50000x reference
 => passed      student <= 10000x reference
@@ -512,37 +505,37 @@ Test 2a-c: time length() and ancestor() with random pairs of vertices
 
 Test 3a-c: time length() and ancestor() with random subsets of 5 vertices
   *  digraph-wordnet.txt
-     -  reference solution calls per second:  339958.00
-     -  student   solution calls per second:     103.00
-     -  reference / student ratio:              3300.56
+     -  reference solution calls per second:  295294.00
+     -  student   solution calls per second:    1601.00
+     -  reference / student ratio:               184.44
 
 => passed      student <= 10000x reference
 => passed      student <=  5000x reference
-=> FAILED      student <=  1000x reference
-=> FAILED      student <=   500x reference
+=> passed      student <=  1000x reference
+=> passed      student <=   500x reference
 
 Test 4a-c: time length() and ancestor() with random subsets of 100 vertices
   *  digraph-wordnet.txt
-     -  reference solution calls per second:   18423.00
-     -  student   solution calls per second:       1.00
-     -  reference / student ratio:             18423.00
+     -  reference solution calls per second:   19064.00
+     -  student   solution calls per second:    1384.00
+     -  reference / student ratio:                13.77
 
-=> FAILED      student <= 10000x reference
-=> FAILED      student <=  5000x reference
-=> FAILED      student <=  1000x reference
-=> FAILED      student <=   500x reference
+=> passed      student <= 10000x reference
+=> passed      student <=  5000x reference
+=> passed      student <=  1000x reference
+=> passed      student <=   500x reference
 
 Test 5: Time 10 calls to length() and ancestor() on random path graphs
         (must handle V = 65536 in under 2 seconds)
 
              V  seconds
         ---------------
-         32768     0.06
-         65536     0.13
+         32768     0.05
+         65536     0.12
 ==> passed
 
 
-Total: 8/14 tests passed!
+Total: 14/14 tests passed!
 
 
 ================================================================
@@ -575,22 +568,20 @@ Test 3: count Digraph operations during WordNet constructor
   * number of hypernyms  = 84505
   * calls to constructor = 2
   * calls to addEdge()   = 84505
-  * calls to adj()       = 908130
-    - the constructor makes more than 2 calls to adj() per vertex
-
+  * calls to adj()       = 164384
   * calls to outdegree() = 0
   * calls to indegree()  = 82192
   * calls to reverse()   = 0
   * calls to toString()  = 0
 
-==> FAILED
+==> passed
 
 Test 4: count Digraph operations during 1000 calls each
         to distance() and sap()
   * synsets = synsets.txt; hypernyms = hypernyms.txt
   * calls to constructor = 0
   * calls to addEdge()   = 0
-  * calls to adj()       = 45998
+  * calls to adj()       = 46336
   * calls to reverse()   = 0
   * calls to toString()  = 0
 
@@ -598,16 +589,16 @@ Test 4: count Digraph operations during 1000 calls each
 
 Test 5: time WordNet constructor
   * synsets = synsets.txt; hypernyms = hypernyms.txt
-    - student constructor time =  1.34 seconds
+    - student constructor time =  0.32 seconds
     - maximum allowed     time = 10.00 seconds
 
 ==> passed
 
 Test 6a-e: time sap() and distance() with random nouns
   * synsets = synsets.txt; hypernyms = hypernyms.txt
-    - reference solution calls per second:  328200.00
-    - student   solution calls per second:  143846.00
-    - reference / student ratio:                 2.28
+    - reference solution calls per second:  315064.00
+    - student   solution calls per second:  154593.00
+    - reference / student ratio:                 2.04
 
 => passed    student <= 10000x reference
 => passed    student <=  1000x reference
@@ -617,13 +608,13 @@ Test 6a-e: time sap() and distance() with random nouns
 
 Test 7: time isNoun() with random nouns
   * synsets = synsets.txt; hypernyms = hypernyms.txt
-    - reference solution calls per second: 1447453.00
-    - student   solution calls per second:  750710.00
-    - reference / student ratio:                 1.93
+    - reference solution calls per second: 1356880.00
+    - student   solution calls per second:  767006.00
+    - reference / student ratio:                 1.77
     - allowed ratio:                             4.00
 ==> passed
 
-Total: 10/11 tests passed!
+Total: 11/11 tests passed!
 
 
 ================================================================

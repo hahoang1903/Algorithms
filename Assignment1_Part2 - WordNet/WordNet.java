@@ -1,6 +1,5 @@
 import edu.princeton.cs.algs4.Digraph;
 import edu.princeton.cs.algs4.DirectedCycle;
-import edu.princeton.cs.algs4.DirectedDFS;
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.SET;
 import edu.princeton.cs.algs4.ST;
@@ -53,9 +52,8 @@ public class WordNet {
 
         int counter = 0;
         for (int i = 0; i < wordNet.V(); i++) {
-            DirectedDFS directedDFS = new DirectedDFS(wordNet, i);
-
-            if (directedDFS.count() == 1) counter++;
+            if (!wordNet.adj(i).iterator().hasNext())
+                counter++;
 
             if (counter > 1) throw new IllegalArgumentException();
         }
