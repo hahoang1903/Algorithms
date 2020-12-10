@@ -1,12 +1,14 @@
 import edu.princeton.cs.algs4.StdOut;
 import edu.princeton.cs.algs4.StdRandom;
 
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 public class RandomizedQueue<Item> implements Iterable<Item> {
     private Item[] data;
     private int size;
+
     public RandomizedQueue() {
         size = 0;
         data = (Item[]) new Object[1];
@@ -42,16 +44,14 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
     public Item dequeue() {
         if (isEmpty())
             throw new NoSuchElementException();
-        int index = StdRandom.uniform(size);
-        Item item = data[index];
-        for (int i = index; i < size; i++) {
-            if (i == size - 1 && size == data.length)
-                data[i] = null;
-            else
-                data[i] = data[i + 1];
-        }
 
-        size--;
+        int index = StdRandom.uniform(size);
+
+        Item item = data[index];
+
+        data[index] = data[size - 1];
+        data[--size] = null;
+
         if (size == data.length / 4)
             resize(data.length / 2);
         return item;
@@ -69,11 +69,18 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
     }
 
     private class RandomizedQueueIterator implements Iterator<Item> {
-        private int current = 0;
-        private int currentReverse = size - 1;
-        private final boolean reverse = StdRandom.bernoulli();
+        private int current;
+        private RandomizedQueue<Item> rq;
+
+        public RandomizedQueueIterator() {
+            current = 0;
+            rq = new RandomizedQueue<Item>();
+            rq.data = Arrays.copyOf(data, size);
+            rq.size = size;
+        }
+
         public boolean hasNext() {
-            return current != size && currentReverse >= 0;
+            return current < rq.size;
         }
 
         public void remove() {
@@ -83,10 +90,8 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
         public Item next() {
             if (!hasNext())
                 throw new NoSuchElementException();
-            if (reverse)
-                return data[currentReverse--];
-            else
-                return data[current++];
+
+            return rq.dequeue();
         }
     }
 
