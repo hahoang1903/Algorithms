@@ -94,6 +94,7 @@ public class Deque<Item> implements Iterable<Item> {
 
     private class DequeIterator implements Iterator<Item> {
         private Node current = first;
+
         public boolean hasNext() {
             return current != null;
         }
@@ -103,7 +104,7 @@ public class Deque<Item> implements Iterable<Item> {
         }
 
         public Item next() {
-            if(!hasNext())
+            if (!hasNext())
                 throw new NoSuchElementException();
 
             Item item = current.item;
